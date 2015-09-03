@@ -16,9 +16,8 @@
 </SELECT>
 
 <input type="number" name="var2" />
-=
-<br>
-<input type="submit" value="Бод" />
+
+<input type="submit" value="=" />
 </form>
 <br>
 
