@@ -25,20 +25,19 @@ Tooni mashin
 		$r=$_POST{"interestrate"}/100/12;	//neg sarin huu (butarhai toogoor)
 		$l=$_POST["length"];
 		
-		
 		$tmp=pow(1+$r,$l);
-		$A=$P*$r*$tmp/($tmp-1);  //$A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
+		$A=$P*$r*$tmp/($tmp-1);  //$P -> zeelin hemje  $A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
+		echo "sariin tulbur " . number_format($A,2) ."<br>";
 		
-		
-		for($undsenuldegdel=$P,$time=0;$time<$l;$time++){
-			$huugiin=$undsenuldegdel*$r;
-			$undsenuldegdel-=$huugiin;
-			echo "huugiin" . $huugiin. "  ";
-			echo "undsen" . $undsenuldegdel;
-			?>
-			<br>
-			<?php 
+		for($etssiinuldegdel=floatval($P),$time=0;$time<$l;$time++){
+			$huugiin=$etssiinuldegdel*$r;
+			$sariinuldegdel=$A-$huugiin;
+			$etssiinuldegdel-=$sariinuldegdel;
 			
+			echo "undsen " . number_format($sariinuldegdel,2) . "    ";
+			echo "huugiin " . number_format($huugiin,2). "    ";
+			echo "niit uldegdel " . number_format($etssiinuldegdel); 
+			echo "<br>";						
 		}
 	}
 	
