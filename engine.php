@@ -12,8 +12,6 @@
     </head>
 <body>
 
-
-
 <div class="row">
 <div class="col-md-7"  align="center" >
 <img class="pic" src="ARD.jpg" align="left">
@@ -46,16 +44,17 @@
 <div class="col-sm-3 sidebar">
 <div class="subscribe">
 <h1 class="title"><i class="fa fa-calculator"></i>Зээлийн <br>тооцоолуур</h1>
+<?php $flag=0; ?>
 <form action="engine.php" method="GET">
-
 <span>Зээлийн хэмжээ:</span>
-<input type="number" name="loanamount"  class="form-control" placeholder="Зээлийн хэмжээ"     />
+<input type="number" name="loanamount"  class="form-control"  placeholder="Зээлийн хэмжээ" 
+value="<?php if($_GET{"loanamount"}!=0) echo $_GET{"loanamount"}; ?>">
 <br>
 <span>Зээлийн хүү (%):</span>
-<input type="number" name="interestrate" class="form-control" placeholder="Жилийн хүү(%)"  />
+<input type="number" name="interestrate" class="form-control" placeholder="Жилийн хүү(%)" value="<?php if( $_GET{"interestrate"}!=0) echo $_GET{"interestrate"}; ?>"  />
 <br>
 <span>Хугацаа:</span>
-<input type="number" name="length" class="form-control" placeholder="Сараар"/>
+<input type="number" name="length" class="form-control" placeholder="Сараар" value="<?php if($_GET{"length"}!=0) echo  $_GET{"length"}; ?>"/>
 <br>
 <input type="submit" value="Тооцоолох" class="btn btn-lg"  placeholder="Зээл төлөлтийн хугацаа (сараар)"/>
 </form>
@@ -76,11 +75,11 @@
     
 
     if(isset($_GET["loanamount"])&&isset($_GET["interestrate"])&&isset($_GET["length"])){
-        
+
         $P=$_GET{"loanamount"};
         $r=$_GET{"interestrate"}/100/12;	//neg sarin huu (butarhai toogoor)
         $l=$_GET["length"];
-        
+        $flag=1;
         $tmp=pow(1+$r,$l);
         $A=$P*$r*$tmp/($tmp-1);  //$P -> zeelin hemje  $A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
        
