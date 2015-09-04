@@ -44,7 +44,6 @@
 <div class="col-sm-3 sidebar">
 <div class="subscribe">
 <h1 class="title"><i class="fa fa-calculator"></i>Зээлийн <br>тооцоолуур</h1>
-<?php $flag=0; ?>
 <form action="engine.php" method="GET">
 <span>Зээлийн хэмжээ:</span>
 <input type="number" name="loanamount"  class="form-control"  placeholder="Зээлийн хэмжээ" 
@@ -79,7 +78,6 @@ value="<?php if($_GET{"loanamount"}!=0) echo $_GET{"loanamount"}; ?>">
         $P=$_GET{"loanamount"};
         $r=$_GET{"interestrate"}/100/12;	//neg sarin huu (butarhai toogoor)
         $l=$_GET["length"];
-        $flag=1;
         $tmp=pow(1+$r,$l);
         $A=$P*$r*$tmp/($tmp-1);  //$P -> zeelin hemje  $A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
        
