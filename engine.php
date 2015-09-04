@@ -1,55 +1,49 @@
 <html>
-
-<title>Тооны машаан</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Tooni mashin</title>
 <body>
 
+
 <form action="engine.php" method="POST">
-Тооны машин<br />
-<input type="number" name="var1" />
-
-<SELECT name="Uildel">
-<OPTION value="1">+</OPTION>
-<OPTION value="2" selected>-</OPTION>
-<OPTION value="3">*</OPTION>
-<OPTION value="4">/</OPTION>
-</SELECT>
-
-<input type="number" name="var2" />
-
-<input type="submit" value="=" />
-</form>
+Tooni mashin
+<br />
 <br>
+<input type="number" name="loanamount" />
+<br><br>
+<input type="number" name="interestrate" />
+<br><br>
+<input type="number" name="length" />
+<br><br>
+<input type="submit" value="Tootsooloh" />
+</form>
 
-
+<br>
 <?php 
-	if(isset($_POST["var1"])&&isset($_POST["var2"])&&isset($_REQUEST["Uildel"])){
+	if(isset($_POST["loanamount"])&&isset($_POST["interestrate"])&&isset($_POST["length"])){
 		
-		$a=$_POST{"var1"};
-		$b=$_POST{"var2"};
-		$uildel=$_REQUEST["Uildel"];
+		$P=$_POST{"loanamount"};
+		$r=$_POST{"interestrate"}/100/12;	//neg sarin huu (butarhai toogoor)
+		$l=$_POST["length"];
 		
-		switch($uildel){
-			case(1): 		//nemeh
-				$hariu=$a+$b; 
-				break;
-			case(2):		//hasah
-				$hariu=$a-$b;
-				break;
-			case(3):		//urjih
-				$hariu=$a*$b;
-				break;
-			case(4):		//huvaah
-				$hariu=$a/$b;
-				break;
-			default:
-				echo "error on case";
-				break;
+		
+		$tmp=pow(1+$r,$l);
+		$A=$P*$r*$tmp/($tmp-1);  //$A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
+		
+		
+		for($undsenuldegdel=$P,$time=0;$time<$l;$time++){
+			$huugiin=$undsenuldegdel*$r;
+			$undsenuldegdel-=$huugiin;
+			echo "huugiin" . $huugiin. "  ";
+			echo "undsen" . $undsenuldegdel;
+			?>
+			<br>
+			<?php 
+			
 		}
-		
-		echo $hariu;
 	}
-?>
+	
+	?>
+
 
 
 </body>
