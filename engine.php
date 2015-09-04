@@ -46,7 +46,7 @@
 <div class="col-sm-3 sidebar">
 <div class="subscribe">
 <h1 class="title"><i class="fa fa-calculator"></i>Зээлийн <br>тооцоолуур</h1>
-<form action="engine.php" method="POST">
+<form action="engine.php" method="GET">
 
 <span>Зээлийн хэмжээ:</span>
 <input type="number" name="loanamount"  class="form-control" placeholder="Зээлийн хэмжээ"     />
@@ -70,16 +70,16 @@
 <br>
 
 
-<table border="1" width="100%">
+<table border="1" width="100%" class="form-control">
 
 <?php
     
 
-    if(isset($_POST["loanamount"])&&isset($_POST["interestrate"])&&isset($_POST["length"])){
+    if(isset($_GET["loanamount"])&&isset($_GET["interestrate"])&&isset($_GET["length"])){
         
-        $P=$_POST{"loanamount"};
-        $r=$_POST{"interestrate"}/100/12;	//neg sarin huu (butarhai toogoor)
-        $l=$_POST["length"];
+        $P=$_GET{"loanamount"};
+        $r=$_GET{"interestrate"}/100/12;	//neg sarin huu (butarhai toogoor)
+        $l=$_GET["length"];
         
         $tmp=pow(1+$r,$l);
         $A=$P*$r*$tmp/($tmp-1);  //$P -> zeelin hemje  $A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
