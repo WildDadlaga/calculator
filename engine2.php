@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tooni mashin</title>
@@ -21,6 +20,8 @@
                                 background: url(.jpg) no-repeat;
                                 background-position:left;
 
+                                
+
                             }
 
                 body {
@@ -36,16 +37,10 @@
                 .container-fluid{
 
                                 padding:15px; 
-
                              }
                 .col-md-4{
                                 padding:10px;
-                            }
-                .table1{
-
-                                width:100%;
-
-                             }
+                        }
 
             </style>
                         
@@ -64,16 +59,16 @@
                               <ul class="nav navbar-nav">
                               <tr>
                                 <td align="center" >
-                                  <a href="http://ardassets.com/about"><font color="#848484">Бидний тухай</font></a>
+                                  <a href="http://ardassets.com/about">Бидний тухай</a>
                                 </td >  
                                 <td align="center">
-                                  <a href="http://ardassets.com/pension"><font color="#848484">Бүтээгдэхүүн</font></a>
+                                  <a href="http://ardassets.com/pension">Бүтээгдэхүүн</a>
                                 </td>
                                 <td align="center">
-                                  <a href="http://ardassets.com/category/news"><font color="#848484">Мэдээлэл</font></a>
+                                  <a href="http://ardassets.com/category/news">Мэдээлэл</a>
                                 </td>
                                 <td align="center">           
-                                   <a href="http://ardassets.com/contact"><font color="#848484">Холбоо барих</font></a>
+                                   <a href="http://ardassets.com/contact">Холбоо барих</a>
                                 </td>
                               </tr>
                               </ul>
@@ -88,7 +83,7 @@
                     <div class="col-md-4">
                         <div class="subscribe">
                             <h1 class="title"><i class="fa fa-calculator"></i>Зээлийн <br>тооцоолуур</h1>
-                            <form action="test.php" method="GET">
+                            <form action="engine.php" method="GET">
                                 <span>Зээлийн хэмжээ:</span>
                                 <input type="number" name="loanamount"  class="form-control"  placeholder="Зээлийн хэмжээ" 
                                     value="<?php if($_GET{"loanamount"}!=0) echo $_GET{"loanamount"}; ?>">
@@ -106,10 +101,9 @@
                                 $curr_year = date("y")+2000;
                                 $year = array (1=>$curr_year, $curr_year+1, $curr_year+2, $curr_year+3, $curr_year+4);
                                 $select = "<select name=\"year\">\n";
-                                if(isset($_GET{"year"})) $curr_year= $_GET{"year"};
                                 foreach ($year as $key => $val) {
                                     $select .= "\t<option val=\"".$key."\"";
-                                    if ($year[$key] == $curr_year) {
+                                    if ($key == $curr_year) {
                                         $select .= " selected=\"selected\">".$val."</option>\n";
                                     } else {
                                         $select .= ">".$val."</option>\n";
@@ -122,7 +116,6 @@
                                 $curr_month = date("m");
                                 $month = array (1=>1,2,3,4,5,6,7,8,9,10,11,12);
                                 $select = "<select name=\"month\"  \n" ;
-                                if(isset($_GET{"month"})) $curr_month= $_GET{"month"};
                                 foreach ($month as $key => $val) {
                                     $select .= "\t<option val=\"".$key."\"";
                                     if ($key == $curr_month) {
@@ -145,92 +138,81 @@
                     <br>                       
                     <div class="col-md-8" >    
                     <div class="table-responsive">
-                        <table rules="none"  class="table1" >
+                        <table border="1"  class="table loan table-bordered ac-table text-center" align="center"  >
                            <?php
-                                        if(isset($_GET["loanamount"])&&isset($_GET["interestrate"])&&isset($_GET["length"])){
 
-                                        $P=$_GET{"loanamount"};
-                                        $r=$_GET{"interestrate"}/100/12;	//neg sarin huu (butarhai toogoor)
-                                        $l=$_GET["length"];
-                                        $ognoo= array (intval($_GET['month']), intval($_GET['year']));
-                            
-                                        $tmp=pow(1+$r,$l);
-                                        $A=$P*$r*$tmp/($tmp-1);  //$P -> zeelin hemje  $A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
+                    
+
+                            if(isset($_GET["loanamount"])&&isset($_GET["interestrate"])&&isset($_GET["length"])){
+
+                            $P=$_GET{"loanamount"};
+                            $r=$_GET{"interestrate"}/100/12;	//neg sarin huu (butarhai toogoor)
+                            $l=$_GET["length"];
+                            $ognoo= array (intval($_GET['month']), intval($_GET['year']));
+                            $tmp=pow(1+$r,$l);
+                            $A=$P*$r*$tmp/($tmp-1);  //$P -> zeelin hemje  $A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
+
+
+                                
+                                    
+                                        echo "<tr><th> Сард төлөх зээлийн хэмжээ </th>";
+                                        echo "<th> Хугацаа </th></tr>";
+                                        echo "<td>" .number_format($A,2). "</td>";
+                                        echo "<td>" .$l. "</td>";
+                                   
                                         
-                                        echo "<tr><td><u><font size=\"2\"> Сард төлөх зээлийн хэмжээ </font></u></td>";
-                                        echo "<td><u><font size=\"2\">Хугацаа </font></u></td></tr>";
-                                        echo "<td><b><font color=\"#585858\" size=\"7\">" .number_format($A,2). "</font></b></td>";
-                                        echo "<td><b><font color=\"#585858  \" size=\"7\">" .$l. " Сар</font></b></td>";                           
-                            ?>
-                        </table>
-                            
-                        <table class="table loan table-bordered ac-table text-center">
-                            <?php
-
-                            echo "<tr><th>Сар</th>";
-                            echo "<th>Үндсэн зээлийн төлөлт</th>";
-                            echo "<th>Хүүгийн төлөлт</th>";
-                            echo "<th>Тэнцүү төлөлт</th>";
-                            echo "<th>Үндсэн зээлийн үлдэгдэл</th></tr>";
-                            
-                            for($etssiinuldegdel=floatval($P),$showtime=$ognoo,$time=0;$time<$l;$time++,$showtime[0]++){
+                         
+                                    
+                                    for($etssiinuldegdel=floatval($P),$showtime=$ognoo,$time=0;$time<$l;$time++,$showtime[0]++){
                                         $huugiin=$etssiinuldegdel*$r;
                                         $sariinuldegdel=$A-$huugiin;
                                         $etssiinuldegdel-=$sariinuldegdel;
-   
-                                
-                                 echo "<tr><td>".$showtime[1]."/".$showtime[0]."</td>";
+
+
+
+                                        
+                                        
+                                        echo "<tr><td>".$showtime[1]."/".$showtime[0]."</td>";
                                         if($showtime[0]>=12){
                                             $showtime[0]=0;
                                             $showtime[1]++;
-                                
-                                echo "<td>" .number_format($sariinuldegdel,2)."</td>";
-                                echo "<td>" .number_format($huugiin,2)."</td>";
-                                echo "<td>" .number_format($A,2). "</td>";
-                                echo "<td>" .number_format($etssiinuldegdel,2)."</td></tr>";
-                                
-                            }
-                        }
-                        ?>
-                    </table>
+                                        }
+                                        echo "<td>" .number_format($sariinuldegdel,2)."</td>";
+                                        echo "<td>" .number_format($huugiin,2)."</td>";
+                                        echo "<td>" .number_format($A,2). "</td>";
+                                        echo "<td>" .number_format($etssiinuldegdel,2)."</td></tr>";
+                                        
+                                    }
+                                }
+                                ?>
+                            </table>
+
                     </div>
                     </div>   
             </div>
-
-
-
-            <div id="side-btn">
-                <a href="http://ardassets.com/online">
-                    Онлайн зээлийн<br>ѳргѳдѳл
-                </a>
-            </div>
-
-
-
             <div id="footer">
-                <div class="container">
-                    <div class="pull-left">Ард Актив © 2015 Бүх эрх хуулиар хамгаалагдсан.
-                        <div>
-                              <ul class="social pull-right">
-                                      <li class="fa fa-facebook">
-                            <a href="http://www.facebook.com/ardassetscom" target="_blank">
-                              facebook
-                            </a>
-                          </li>
-                                                  <li class="fa fa-twitter">
-                            <a href="http://twitter.com/ardassets" target="_blank">
-                              twitter
-                            </a>
-                          </li>
-                                                  <li class="fa fa-linkedin">
-                            <a href="http://www.linkedin.com/company/ard-assets" target="_blank">
-                              linkedin
-                            </a>
-                          </li>
-                                  </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="pull-left">
+          Ард Актив © 2015 Бүх эрх хуулиар хамгаалагдсан.
+        </div>
+                  <ul class="social pull-right">
+                          <li class="fa fa-facebook">
+                <a href="http://www.facebook.com/ardassetscom" target="_blank">
+                  facebook
+                </a>
+              </li>
+                                      <li class="fa fa-twitter">
+                <a href="http://twitter.com/ardassets" target="_blank">
+                  twitter
+                </a>
+              </li>
+                                      <li class="fa fa-linkedin">
+                <a href="http://www.linkedin.com/company/ard-assets" target="_blank">
+                  linkedin
+                </a>
+              </li>
+                      </ul>
+              </div>
+    </div>
     </body>
 </html>
