@@ -158,17 +158,10 @@
                                       
                     <div class="col-md-8" >    
                     <div class="table-responsive">
-<<<<<<< Updated upstream
+
                         <br>
                         <br>
-=======
-                    <br>
 
-
-
-
-
->>>>>>> Stashed changes
                         <table rules="none"  class="table1" >
                            <?php
                                         if(isset($_GET["loanamount"])&&isset($_GET["interestrate"])&&isset($_GET["length"])){
@@ -179,18 +172,13 @@
                                         $ognoo= array (intval($_GET['month']), intval($_GET['year']));
                                         $tmp=pow(1+$r,$l);
                                         $A=$P*$r*$tmp/($tmp-1);  //$P -> zeelin hemje  $A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
-<<<<<<< Updated upstream
+
                                         echo "<br>";
                                         echo "<tr><td><u><font size=\"2\"> Сард төлөх зээлийн хэмжээ </font></u></td>";
                                         echo "<td><u><font size=\"2\">Зээл төлж дуусах хугацаа </font></u></td></tr>";
                                         echo "<td><b><font color=\"#585858\" size=\"7\">" .number_format($A,2). "</font></b></td>";
 
-=======
 
-                                        echo "<tr><td><u><font size=\"2\"> Сард төлөх зээлийн хэмжээ </font></u></td>";
-                                        echo "<td><u><font size=\"2\">Зээл төлж дуусах хугацаа </font></u></td></tr>";
-                                        echo "<td><b><font color=\"#585858\" size=\"7\">" .number_format($A,2). "</font></b></td>";
->>>>>>> Stashed changes
                                         $duusah=$ognoo;
                                         $duusah[0]+=$l;
                                         while($duusah[0]>12) {
@@ -202,11 +190,9 @@
                             ?>
                         </table>
                         <br>
-<<<<<<< Updated upstream
+
                         <br>
-=======
->>>>>>> Stashed changes
-                            
+  
                         <table class="table loan table-bordered ac-table text-center">
                             <?php
 
