@@ -11,7 +11,7 @@
     <link href="http://ardassets.com/wp-content/themes/assets/dist/css/font-awesome.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="http://ardassets.com/wp-content/themes/assets/css/style.css" type="text/css" />
     <meta name='robots' content='noindex,follow' />
-<link rel="alternate" type="application/rss+xml" title="ardassets.com &raquo; Зээлийн тооцоолуур Comments Feed" href="http://ardassets.com/calculator/feed/" />
+    <link rel="alternate" type="application/rss+xml" title="ardassets.com &raquo; Зээлийн тооцоолуур Comments Feed" href="http://ardassets.com/calculator/feed/" />
 
             <style type="text/css">
 
@@ -19,7 +19,8 @@
                                 
                                 background: url(.jpg) no-repeat;
                                 background-position:left;
-                                background-color:#eff5fb;
+
+                                
 
                             }
 
@@ -28,55 +29,57 @@
                                 background-position: center;
 
                                 margin-right: 50px;
-                                margin-left: 50px
+                                margin-left: 50px;
+                                padding:20px;
+                                
                                 
                             } 
-                .table1{
-                                margin-top:50px;
-                                background:font-size:20px;
-                                
-                            } 
-                
-                
+                .container-fluid{
+
+                                padding:15px; 
+                             }
+                .col-md-4{
+                                padding:10px;
+                        }
+
             </style>
                         
     </head>
     <body>
             <div class="row">
-                 <div class="col-md-4"  align="center" >
+                <div class="col-md-4"  align="center" >
                       <img class="pic" src="ARD.jpg" align="left">
                 </div>
                 <div class="col-md-2"  align="center" >
                 </div>
                 <div class="col-md-6" >
-                    <table class="table1" width="100%" rules="cols">
+                    <table   width="100%" rules="cols"  >
                         <div class="container-fluid">
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                               <ul class="nav navbar-nav">
                               <tr>
-                                <td><li>
+                                <td align="center" >
                                   <a href="http://ardassets.com/about">Бидний тухай</a>
-                                </li></td>  
-                                <td><li>
+                                </td >  
+                                <td align="center">
                                   <a href="http://ardassets.com/pension">Бүтээгдэхүүн</a>
-                                </li></td>
-                                <td><li>
+                                </td>
+                                <td align="center">
                                   <a href="http://ardassets.com/category/news">Мэдээлэл</a>
-                                </li></td>
-                                <td><li>
-                                  <a href="http://ardassets.com/contact">Холбоо барих</a>
-                                </li></td></tr>
+                                </td>
+                                <td align="center">           
+                                   <a href="http://ardassets.com/contact">Холбоо барих</a>
+                                </td>
+                              </tr>
                               </ul>
                             </div>
                         </div>
-                </table>
-            </div>
+                    </table>
+                </div>
             </div>
 
 
-            <div class="row">
-               
-                    
+            <div class="row">   
                     <div class="col-md-4">
                         <div class="subscribe">
                             <h1 class="title"><i class="fa fa-calculator"></i>Зээлийн <br>тооцоолуур</h1>
@@ -98,62 +101,49 @@
                     <br>                       
                     <div class="col-md-8" >    
                     <div class="table-responsive">
-                        <table border="1"  class="form-control" align="center">
+                        <table border="1"  class="table loan table-bordered ac-table text-center" align="center"  >
                            <?php
-                    
+                                        if(isset($_GET["loanamount"])&&isset($_GET["interestrate"])&&isset($_GET["length"])){
 
-                            if(isset($_GET["loanamount"])&&isset($_GET["interestrate"])&&isset($_GET["length"])){
-
-                            $P=$_GET{"loanamount"};
-                            $r=$_GET{"interestrate"}/100/12;	//neg sarin huu (butarhai toogoor)
-                            $l=$_GET["length"];
-                            $tmp=pow(1+$r,$l);
-                            $A=$P*$r*$tmp/($tmp-1);  //$P -> zeelin hemje  $A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
-                            
-                           
-                            
-
-                                
-                                    
-                                        echo "<tr><th> Сард төлөх зээлийн хэмжээ </th>";
-                                        echo "<th> Хугацаа </th></tr>";
-                                        echo "<td>" .number_format($A,2). "</td>";
-                                        echo "<td>" .$l. "</td>";
-                                   
-                             
-
-
+                                        $P=$_GET{"loanamount"};
+                                        $r=$_GET{"interestrate"}/100/12;	//neg sarin huu (butarhai toogoor)
+                                        $l=$_GET["length"];
+                                        $tmp=pow(1+$r,$l);
+                                        $A=$P*$r*$tmp/($tmp-1);  //$P -> zeelin hemje  $A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
+                                        
+                                        echo "<tr><th><font size=\"5\"> Сард төлөх зээлийн хэмжээ </font></th>";
+                                        echo "<th><font size=\"5\">Хугацаа </font></th></tr>";
+                                        echo "<td><font size=\"5\">" .number_format($A,2). "</font></td>";
+                                        echo "<td><font size=\"5\">" .$l. " Сар</font></td>";                           
                             ?>
                         </table>
-                            <br>
-                            <br>
-                            <br>
-                                <table class="table loan table-bordered ac-table text-center">
-                                    <?php
+                            
+                        <table class="table loan table-bordered ac-table text-center">
+                            <?php
 
-                                    echo "<tr><th>Сар</th>";
-                                    echo "<th>Үндсэн зээлийн төлөлт</th>";
-                                    echo "<th>Хүүгийн төлөлт</th>";
-                                    echo "<th>Тэнцүү төлөлт</th>";
-                                    echo "<th>Үндсэн зээлийн үлдэгдэл</th></tr>";
-                                    
-                                    for($etssiinuldegdel=floatval($P),$time=0;$time<$l;$time++){
-                                        $huugiin=$etssiinuldegdel*$r;
-                                        $sariinuldegdel=$A-$huugiin;
-                                        $etssiinuldegdel-=$sariinuldegdel;
-                                        $Aladin=$time+1;
-                                        
-                                        
-                                        echo "<tr><td>".$Aladin."</td>";
-                                        echo "<td>" .number_format($sariinuldegdel,2)."</td>";
-                                        echo "<td>" .number_format($huugiin,2)."</td>";
-                                        echo "<td>" .number_format($A,2). "</td>";
-                                        echo "<td>" .number_format($etssiinuldegdel,2)."</td></tr>";
-                                        
-                                    }
-                                }
-                                ?>
-                            </table>
+                            echo "<tr><th>Сар</th>";
+                            echo "<th>Үндсэн зээлийн төлөлт</th>";
+                            echo "<th>Хүүгийн төлөлт</th>";
+                            echo "<th>Тэнцүү төлөлт</th>";
+                            echo "<th>Үндсэн зээлийн үлдэгдэл</th></tr>";
+                            
+                            for($etssiinuldegdel=floatval($P),$time=0;$time<$l;$time++){
+                                $huugiin=$etssiinuldegdel*$r;
+                                $sariinuldegdel=$A-$huugiin;
+                                $etssiinuldegdel-=$sariinuldegdel;
+                                $Aladin=$time+1;
+                                
+                                
+                                echo "<tr><td>".$Aladin."</td>";
+                                echo "<td>" .number_format($sariinuldegdel,2)."</td>";
+                                echo "<td>" .number_format($huugiin,2)."</td>";
+                                echo "<td>" .number_format($A,2). "</td>";
+                                echo "<td>" .number_format($etssiinuldegdel,2)."</td></tr>";
+                                
+                            }
+                        }
+                        ?>
+                    </table>
                     </div>
                     </div>   
             </div>
