@@ -20,8 +20,6 @@
                                 background: url(.jpg) no-repeat;
                                 background-position:left;
 
-                                
-
                             }
 
                 body {
@@ -37,10 +35,16 @@
                 .container-fluid{
 
                                 padding:15px; 
+
                              }
                 .col-md-4{
                                 padding:10px;
-                        }
+                            }
+                .table1{
+
+                                width:100%;
+
+                             }
 
             </style>
                         
@@ -59,16 +63,16 @@
                               <ul class="nav navbar-nav">
                               <tr>
                                 <td align="center" >
-                                  <a href="http://ardassets.com/about">Бидний тухай</a>
+                                  <a href="http://ardassets.com/about"><font color="#848484">Бидний тухай</font></a>
                                 </td >  
                                 <td align="center">
-                                  <a href="http://ardassets.com/pension">Бүтээгдэхүүн</a>
+                                  <a href="http://ardassets.com/pension"><font color="#848484">Бүтээгдэхүүн</font></a>
                                 </td>
                                 <td align="center">
-                                  <a href="http://ardassets.com/category/news">Мэдээлэл</a>
+                                  <a href="http://ardassets.com/category/news"><font color="#848484">Мэдээлэл</font></a>
                                 </td>
                                 <td align="center">           
-                                   <a href="http://ardassets.com/contact">Холбоо барих</a>
+                                   <a href="http://ardassets.com/contact"><font color="#848484">Холбоо барих</font></a>
                                 </td>
                               </tr>
                               </ul>
@@ -101,7 +105,7 @@
                     <br>                       
                     <div class="col-md-8" >    
                     <div class="table-responsive">
-                        <table border="1"  class="table loan table-bordered ac-table text-center" align="center"  >
+                        <table rules="none"  class="table1" >
                            <?php
                                         if(isset($_GET["loanamount"])&&isset($_GET["interestrate"])&&isset($_GET["length"])){
 
@@ -111,10 +115,10 @@
                                         $tmp=pow(1+$r,$l);
                                         $A=$P*$r*$tmp/($tmp-1);  //$P -> zeelin hemje  $A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
                                         
-                                        echo "<tr><th><font size=\"5\"> Сард төлөх зээлийн хэмжээ </font></th>";
-                                        echo "<th><font size=\"5\">Хугацаа </font></th></tr>";
-                                        echo "<td><font size=\"5\">" .number_format($A,2). "</font></td>";
-                                        echo "<td><font size=\"5\">" .$l. " Сар</font></td>";                           
+                                        echo "<tr><td><u><font size=\"2\"> Сард төлөх зээлийн хэмжээ </font></u></td>";
+                                        echo "<td><u><font size=\"2\">Хугацаа </font></u></td></tr>";
+                                        echo "<td><b><font color=\"#585858\" size=\"7\">" .number_format($A,2). "</font></b></td>";
+                                        echo "<td><b><font color=\"#585858  \" size=\"7\">" .$l. " Сар</font></b></td>";                           
                             ?>
                         </table>
                             
@@ -147,29 +151,41 @@
                     </div>
                     </div>   
             </div>
+
+
+
+            <div id="side-btn">
+                <a href="http://ardassets.com/online">
+                    Онлайн зээлийн<br>ѳргѳдѳл
+                </a>
+            </div>
+
+
+
             <div id="footer">
-      <div class="container">
-        <div class="pull-left">
-          Ард Актив © 2015 Бүх эрх хуулиар хамгаалагдсан.
-        </div>
-                  <ul class="social pull-right">
-                          <li class="fa fa-facebook">
-                <a href="http://www.facebook.com/ardassetscom" target="_blank">
-                  facebook
-                </a>
-              </li>
-                                      <li class="fa fa-twitter">
-                <a href="http://twitter.com/ardassets" target="_blank">
-                  twitter
-                </a>
-              </li>
-                                      <li class="fa fa-linkedin">
-                <a href="http://www.linkedin.com/company/ard-assets" target="_blank">
-                  linkedin
-                </a>
-              </li>
-                      </ul>
-              </div>
-    </div>
+                <div class="container">
+                    <div class="pull-left">Ард Актив © 2015 Бүх эрх хуулиар хамгаалагдсан.
+                        <div>
+                              <ul class="social pull-right">
+                                      <li class="fa fa-facebook">
+                            <a href="http://www.facebook.com/ardassetscom" target="_blank">
+                              facebook
+                            </a>
+                          </li>
+                                                  <li class="fa fa-twitter">
+                            <a href="http://twitter.com/ardassets" target="_blank">
+                              twitter
+                            </a>
+                          </li>
+                                                  <li class="fa fa-linkedin">
+                            <a href="http://www.linkedin.com/company/ard-assets" target="_blank">
+                              linkedin
+                            </a>
+                          </li>
+                                  </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </body>
 </html>
