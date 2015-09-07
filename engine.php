@@ -147,5 +147,29 @@
                     </div>
                     </div>   
             </div>
+            <div id="footer">
+      <div class="container">
+        <div class="pull-left">
+          Ард Актив © 2015 Бүх эрх хуулиар хамгаалагдсан.
+        </div>
+                  <ul class="social pull-right">
+                          <li class="fa fa-facebook">
+                <a href="http://www.facebook.com/ardassetscom" target="_blank">
+                  facebook
+                </a>
+              </li>
+                                      <li class="fa fa-twitter">
+                <a href="http://twitter.com/ardassets" target="_blank">
+                  twitter
+                </a>
+              </li>
+                                      <li class="fa fa-linkedin">
+                <a href="http://www.linkedin.com/company/ard-assets" target="_blank">
+                  linkedin
+                </a>
+              </li>
+                      </ul>
+              </div>
+    </div>
     </body>
 </html>
