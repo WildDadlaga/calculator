@@ -1,13 +1,20 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Зээлийн тооцоолуур</title>
+<title>Tooni mashin</title>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta http-equiv="Content-Style-Type" content="text/css">
-        <meta name="Generator" content="Cocoa HTML Writer">
-        <meta name="CocoaVersion" content="1347.57">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- Bootstrap -->
+    <link rel="icon" type="image/png" href="http://ardassets.com/wp-content/themes/assets/images/favicon.png" />
+    <link href="http://ardassets.com/wp-content/themes/assets/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="http://ardassets.com/wp-content/themes/assets/css/swiper.min.css">
+    <link href="http://ardassets.com/wp-content/themes/assets/dist/css/font-awesome.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="http://ardassets.com/wp-content/themes/assets/css/style.css" type="text/css" />
+    <meta name='robots' content='noindex,follow' />
+<link rel="alternate" type="application/rss+xml" title="ardassets.com &raquo; Зээлийн тооцоолуур Comments Feed" href="http://ardassets.com/calculator/feed/" />
+
             <style type="text/css">
+
                 table {
                                 
                                 background: url(.jpg) no-repeat;
@@ -121,7 +128,7 @@
                             <br>
                             <br>
                             <br>
-                                <table border="1" width="100%" class="form-control">
+                                <table class="table loan table-bordered ac-table text-center">
                                     <?php
 
                                     echo "<tr><th>Сар</th>";
