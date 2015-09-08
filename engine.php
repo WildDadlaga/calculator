@@ -12,9 +12,11 @@
     <link rel="stylesheet" href="http://ardassets.com/wp-content/themes/assets/css/style.css" type="text/css" />
     <meta name='robots' content='noindex,follow' />
     <link rel="alternate" type="application/rss+xml" title="ardassets.com &raquo; Зээлийн тооцоолуур Comments Feed" href="http://ardassets.com/calculator/feed/" />
-
+    <?php
+        session_start();
+    ?>
             <style type="text/css">
-
+           
                 table {
                                 
                                 background: url(.jpg) no-repeat;
@@ -85,6 +87,9 @@
                                 </td>
                                 <td align="center">           
                                    <a href="http://ardassets.com/contact"><font color="#848484">Холбоо барих</font></a>
+                                </td>
+                                <td align="center">           
+                                   <a href="./login.php"><font color="#848484">Нэвтрэх</font></a>
                                 </td>
                               </tr>
                               </ul>
@@ -178,7 +183,6 @@
                                         echo "<td><u><font size=\"2\">Зээл төлж дуусах хугацаа </font></u></td></tr>";
                                         echo "<td><b><font color=\"#585858\" size=\"7\">" .number_format($A,2). "</font></b></td>";
 
-
                                         $duusah=$ognoo;
                                         $duusah[0]+=$l;
                                         while($duusah[0]>12) {
@@ -222,9 +226,23 @@
                         }
                         ?>
                     </table>
+
+                    <?php
+                        // checking if logged in
+                    if(isset($_SESSION['userid'])){
+                        echo $_SESSION['userid']."<br>";
+                        echo getUserName($_SESSION['userid'])."<br>";
+                        echo getAmount($_SESSION['userid'])."<br>";
+                    }
+                    
+                    ?>
+                    
                     </div>
                     </div>   
             </div>
+            <a href="./logout.php" target="_blank">
+              LOGOUT
+            </a>
 
 
 

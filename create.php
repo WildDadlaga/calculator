@@ -57,7 +57,9 @@
                 
 
             </style>
-                        
+                        <?php
+                            session_start();
+                            ?>
     </head>
     <body>  
 
@@ -96,20 +98,40 @@
 
             <br>
             <br>
-
+            
             <div class="row">   
                     <div class="col-md-4">
-                        <form action="loginservlet.php" method="POST">
+                        <form action="create.php" method="POST">
                                 <span>Name:</span>
                                 <input type="text" name="username"  class="form-control">
                                 <span>Password:</span>
-                                <input type="text" name="userpassword" class="form-control">
+                                <input type="text" name="password" class="form-control">
                                 <span>Password Again:</span>
-                                <input type="text" name="userpassword" class="form-control">
+                                <input type="text" name="repassword" class="form-control">
                                 <br>
                                 <input type="submit" value="Бүртгүлэх" class="btn btn-lg"  placeholder="Зээл төлөлтийн хугацаа (сараар)"/>
 
                             </form>
+
+                        <?php
+                    if(isset($_POST["password"])&&isset($_POST["repassword"])&&isset($_POST["username"])){   //low security 
+                        if($_POST["password"]==$_POST["repassword"]){
+                            $_SESSION['userid']=createUser($_POST["username"],$_POST["password"]);
+                            $_SESSION['flag']=1;
+                            echo "successfully created in";
+                            //jump to engine
+                            header("Location: engine.php");
+
+
+                        }else{
+                            echo "try again";
+
+                        } 
+
+                    }
+                    ?>
+
+
                     </div>
                     </div>   
             </div>

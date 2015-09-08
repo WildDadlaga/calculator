@@ -99,7 +99,7 @@
 
             <div class="row">   
                     <div class="col-md-4">
-                        <form action="loginservlet.php" method="POST">
+                        <form action="login.php" method="POST">
                                 <span>Name:</span>
                                 <input type="text" name="username"  class="form-control">
                                 <br>
@@ -110,8 +110,30 @@
 
                             </form>
                     </div>
+                    <?php
+                    if(isset($_POST["username"])&&isset($_POST["userpassword"])){   //low security 
+
+                            $userid=DBlogin($_POST[username],$_POST[userpassword]);
+                            if($userid!=0){
+                                session_start();
+                                $_SESSION['userid']=$userid;
+                                $_SESSION['flag']=1;
+                                echo "successfully logged in";
+                                //jump to engine
+                                header("Location: engine.php");
+
+
+                            }else{
+                                echo "log in failed";
+                            }
+                    }
+?>
                     </div>   
             </div>
+
+            <a href="./engine.php"   target="_blank" sizei>
+                <font size="5">Тооцоолоорлуу</font>
+            </a>
             <div id="side-btn">
                 <a href="http://ardassets.com/online">
                     Онлайн зээлийн<br>ѳргѳдѳл
