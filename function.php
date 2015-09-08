@@ -41,4 +41,30 @@ function loginDB($x , $y){
 
 
 
+function getUserName($x){
+
+		include "connection.php";
+		$sql = "SELECT id, username,password FROM usertable WHERE id= \"".$x."\" ";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) {
+			    while($row = $result->fetch_assoc()) {
+						     if($x == $row["id"]){
+						     	return $row["username"];
+						     }
+						     else{
+						     	return 0;
+						     }			       
+			    }
+		} 	
+		else {
+		    echo "0 results";
+		    return 0;
+		}
+				
+		$conn->close();
+		return 0;
+}    // Login zuv bol id butsaana.
+
+
+
 ?>
