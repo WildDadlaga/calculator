@@ -132,7 +132,7 @@
             </div>
 
             <a href="./engine.php"   target="_blank" sizei>
-                <font size="5">Тооцоолоорлуу</font>
+                <font size="5"> Тооцоолоорлуу</font>
             </a>
             <div id="side-btn">
                 <a href="http://ardassets.com/online">

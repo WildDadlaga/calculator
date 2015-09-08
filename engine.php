@@ -232,9 +232,8 @@
                     if(isset($_SESSION['userid'])){
                         echo $_SESSION['userid']."<br>";
                         echo getUserName($_SESSION['userid'])."<br>";
-                        echo getAmount($_SESSION['userid'])."<br>";
                     }
-                    
+                    echo "end userid username garch irne!";
                     ?>
                     
                     </div>

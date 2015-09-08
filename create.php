@@ -117,15 +117,11 @@
                     if(isset($_POST["password"])&&isset($_POST["repassword"])&&isset($_POST["username"])){   //low security 
                         if($_POST["password"]==$_POST["repassword"]){
                             $_SESSION['userid']=createUser($_POST["username"],$_POST["password"]);
-                            $_SESSION['flag']=1;
                             echo "successfully created in";
                             //jump to engine
                             header("Location: engine.php");
-
-
                         }else{
                             echo "try again";
-
                         } 
 
                     }
