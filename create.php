@@ -1,4 +1,19 @@
 <html>
+
+<?php
+include "function.php";
+if(isset($_POST["password"])&&isset($_POST["repassword"])&&isset($_POST["username"])){   //low security 
+    if($_POST["password"]==$_POST["repassword"]){
+        $_SESSION['userid']=createUser($_POST["username"],$_POST["password"]);
+        echo "successfully created in";
+        //jump to engine
+        header("Location: engine.php");
+    }else{
+        echo "try again";
+    } 
+
+}
+?>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tooni mashin</title>
     <head>
@@ -113,19 +128,6 @@
 
                             </form>
 
-                        <?php
-                    if(isset($_POST["password"])&&isset($_POST["repassword"])&&isset($_POST["username"])){   //low security 
-                        if($_POST["password"]==$_POST["repassword"]){
-                            $_SESSION['userid']=createUser($_POST["username"],$_POST["password"]);
-                            echo "successfully created in";
-                            //jump to engine
-                            header("Location: engine.php");
-                        }else{
-                            echo "try again";
-                        } 
-
-                    }
-                    ?>
 
 
                     </div>

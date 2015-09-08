@@ -3,10 +3,10 @@
 
 function createUser($x , $y){
 		
-		include "function.php";		
+		include "connection.php";		
 		$sql = "INSERT INTO usertable VALUE( NULL , \"".$x."\" , \"".$y."\")";
 			if ($conn->query($sql) === TRUE) {
-			    return login($x ,$y);
+			    return loginDB($x ,$y);
 			} else {
 			    echo "Error: " . $sql . "<br>" . $conn->error;
 			}
@@ -16,7 +16,7 @@ function createUser($x , $y){
 		
 
 function loginDB($x , $y){
-		include "function.php";
+		include "connection.php";
 		$sql = "SELECT id, username,password FROM usertable WHERE username= \"".$x."\" ";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {

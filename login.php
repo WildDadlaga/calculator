@@ -111,9 +111,10 @@
                             </form>
                     </div>
                     <?php
+                    include "function.php";
                     if(isset($_POST["username"])&&isset($_POST["userpassword"])){   //low security 
 
-                            $userid=DBlogin($_POST[username],$_POST[userpassword]);
+                            $userid=loginDB($_POST[username],$_POST[userpassword]);
                             if($userid!=0){
                                 session_start();
                                 $_SESSION['userid']=$userid;
@@ -130,7 +131,9 @@
 ?>
                     </div>   
             </div>
-
+            <a href="./create.php"   target="_blank" sizei>
+                <font size="5"> Бүртгүүлэх</font>
+            </a>
             <a href="./engine.php"   target="_blank" sizei>
                 <font size="5"> Тооцоолоорлуу</font>
             </a>
