@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tooni mashin</title>
@@ -13,6 +16,7 @@
     <meta name='robots' content='noindex,follow' />
     <link rel="alternate" type="application/rss+xml" title="ardassets.com &raquo; Зээлийн тооцоолуур Comments Feed" href="http://ardassets.com/calculator/feed/" />
     <?php
+
                     include "function.php";
                     if(isset($_POST["username"])&&isset($_POST["userpassword"])){   //low security 
 
@@ -23,15 +27,15 @@
                                 echo "successfully logged in";
                                 unset($_POST["username"]);
                                 unset($_POST["userpassword"]);
+                                
                                 //jump to engine
-                                header("Location: http://localhost/erdenebulag/calculator/engine.php/");
-
+                                header('Location: engine.php');
 
                             }else{
                                 echo "log in failed";
                             }
                     }
-                    if(isset($_SESSION['userid'])) echo "Already logged in";
+                    if(isset($_SESSION['userid'])) echo "<br>Already logged in";
                     else echo "Not logged in yet";
 
 ?>

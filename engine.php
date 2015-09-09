@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>  
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tooni mashin</title>
@@ -26,7 +29,7 @@
         if(isset($_GET['logout'])){
             unset($_GET['logout']);
             session_destroy();                 
-            header('Refresh: 5; URL= http://localhost/erdenebulag/calculator/login.php');
+            header('Refresh: 2; URL= http://localhost/calculator/login.php');
         }
             
     ?>
