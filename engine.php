@@ -23,9 +23,7 @@ ob_start();
     <?php
         session_start();
         include "function.php";
-         if(isset($_SESSION['userid'])) echo "User with userid ".$_SESSION['userid']." Already logged in";
-                    else echo "Not logged in yet";
-
+        
         if(isset($_GET['logout'])){
             unset($_GET['logout']);
             session_destroy();                 
@@ -107,42 +105,54 @@ ob_start();
                                    <a href="http://ardassets.com/contact"><font color="#848484">Холбоо барих</font></a>
                                 </td>
                                 <td align="center">           
-                                   <a href="./login.php"><font color="#848484">Нэвтрэх</font></a>
+                                     <?php
+                                if(!isset($_SESSION['userid'])){
+                                   echo "<a href=\"../login.php\"><font color=\"#848484\">Нэвтрэх</font></a>
                                 </td>
-                                <td align="center">  
+                                <td align=\"center\">";  
+                            }
+                            ?>
                                     <!-- Trigger the modal with a button -->
-                    <button type="button"  data-toggle="modal" data-target="#myModal">Нэвтрэх</button>
+                                     <?php
+                                if(!isset($_SESSION['userid']))
+
+                                    echo "<button type=\"button\"  data-toggle=\"modal\" data-target=\"#myModal\">Нэвтрэх</button>
 
                     <!-- Modal -->
-                    <div id="myModal" class="modal fade" role="dialog">
-                      <div class="modal-dialog">
+                    <div id=\"myModal\" class=\"modal fade\" role=\"dialog\">
+                      <div class=\"modal-dialog\">
 
                         <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Нэвтрэх</h4>
+                        <div class=\"modal-content\">
+                          <div class=\"modal-header\">
+                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>
+                           
                           </div>
-                          <div class="modal-body">
+                          <div class=\"modal-body\">
                             <p>
-                                 <form action="login.php" method="POST">
+                                 <form action=\"login.php\" method=\"POST\">
                                 <span>Name:</span>
-                                <input type="text" name="username"  class="form-control">
+                                <input type=\"text\" name=\"username\"  class=\"form-control\">
                                 <br>
                                 <span>Password:</span>
-                                <input type="text" name="userpassword" class="form-control">
+                                <input type=\"text\" name=\"userpassword\" class=\"form-control\">
                                 <br>
-                                <input type="submit" value="Нэвтрэх" class="btn btn-lg"  placeholder="Зээл төлөлтийн хугацаа (сараар)"/>
+                                <input type=\"submit\" value=\"Нэвтрэх\" class=\"btn btn-lg\"  placeholder=\"Зээл төлөлтийн хугацаа (сараар)\"/>
 
                             </form>
                             </p>
                           </div>
-                          <div class="modal-footer">
+                          <div class=\"modal-footer\">
                           </div>
                         </div>
 
                       </div>
-                    </div>
+                    </div>";
+                                
+                            ?>
+
+
+                    
                                 </td>                                
 
                               </tr>
@@ -219,6 +229,9 @@ ob_start();
                     <div class="table-responsive">
 
                         <br>
+                        <?php
+                            if(isset($_SESSION['userid'])) echo "Хэрэглэгч : <font color=\"#585858\"  size=\"4\">".getUserName($_SESSION['userid'])." </font>нэвтэрсэн байна";
+                        ?>
                         <br>
 
                         <table rules="none"  class="table1" >
@@ -231,6 +244,7 @@ ob_start();
                                         $ognoo= array (intval($_GET['month']), intval($_GET['year']));
                                         $tmp=pow(1+$r,$l);
                                         $A=$P*$r*$tmp/($tmp-1);  //$P -> zeelin hemje  $A -> neg sard tuluh tulbur  $A=$huugiin+$undsen
+
 
                                         echo "<br>";
                                         echo "<tr><td><u><font size=\"2\"> Сард төлөх зээлийн хэмжээ </font></u></td>";
@@ -288,10 +302,8 @@ ob_start();
                     <?php
                         // checking if logged in
                     if(isset($_SESSION['userid'])){
-                        echo $_SESSION['userid']."<br>";
                         echo getUserName($_SESSION['userid'])."<br>";
                     }
-                    echo "end userid username garch irne!";
                     ?>
                     
                     </div>
