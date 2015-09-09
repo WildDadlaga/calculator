@@ -16,8 +16,7 @@ ob_start();
     <meta name='robots' content='noindex,follow' />
     <link rel="alternate" type="application/rss+xml" title="ardassets.com &raquo; Зээлийн тооцоолуур Comments Feed" href="http://ardassets.com/calculator/feed/" />
       <meta charset="utf-8">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <?php
@@ -27,7 +26,7 @@ ob_start();
         if(isset($_GET['logout'])){
             unset($_GET['logout']);
             session_destroy();                 
-            header('Refresh: 2; URL= http://localhost/calculator/login.php');
+            header('Refresh: 2; URL= http://localhost/erdenebulag/calculator/login.php');
         }
             
     ?>
@@ -148,6 +147,7 @@ ob_start();
 
                       </div>
                     </div>";
+                    else echo "<font color=\"#585858\"  size=\"4\">".getUserName($_SESSION['userid'])."</font>";
                                 
                             ?>
 
@@ -228,10 +228,7 @@ ob_start();
                     <div class="col-md-8" >    
                     <div class="table-responsive">
 
-                        <br>
-                        <?php
-                            if(isset($_SESSION['userid'])) echo "Хэрэглэгч : <font color=\"#585858\"  size=\"4\">".getUserName($_SESSION['userid'])." </font>нэвтэрсэн байна";
-                        ?>
+                        <br>                       
                         <br>
 
                         <table rules="none"  class="table1" >
@@ -293,19 +290,7 @@ ob_start();
                             }
                         }
                         ?>
-                    </table>
-
-
-                   
-
-
-                    <?php
-                        // checking if logged in
-                    if(isset($_SESSION['userid'])){
-                        echo getUserName($_SESSION['userid'])."<br>";
-                    }
-                    ?>
-                    
+                    </table>                    
                     </div>
                     </div>   
             </div>
