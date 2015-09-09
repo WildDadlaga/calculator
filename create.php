@@ -4,6 +4,7 @@
 include "function.php";
 if(isset($_POST["password"])&&isset($_POST["repassword"])&&isset($_POST["username"])){   //low security 
     if($_POST["password"]==$_POST["repassword"]){
+        session_start();
         $_SESSION['userid']=createUser($_POST["username"],$_POST["password"]);
         echo "successfully created in";
         //jump to engine

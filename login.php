@@ -12,6 +12,29 @@
     <link rel="stylesheet" href="http://ardassets.com/wp-content/themes/assets/css/style.css" type="text/css" />
     <meta name='robots' content='noindex,follow' />
     <link rel="alternate" type="application/rss+xml" title="ardassets.com &raquo; Зээлийн тооцоолуур Comments Feed" href="http://ardassets.com/calculator/feed/" />
+    <?php
+                    include "function.php";
+                    if(isset($_POST["username"])&&isset($_POST["userpassword"])){   //low security 
+
+                            $userid=loginDB($_POST['username'],$_POST['userpassword']);
+                            if($userid!=0){
+                                session_start();
+                                $_SESSION['userid']=$userid;
+                                echo "successfully logged in";
+                                unset($_POST["username"]);
+                                unset($_POST["userpassword"]);
+                                //jump to engine
+                                header("Location: http://localhost/erdenebulag/calculator/engine.php/");
+
+
+                            }else{
+                                echo "log in failed";
+                            }
+                    }
+                    if(isset($_SESSION['userid'])) echo "Already logged in";
+                    else echo "Not logged in yet";
+
+?>
 
             <style type="text/css">
 
@@ -110,31 +133,13 @@
 
                             </form>
                     </div>
-                    <?php
-                    include "function.php";
-                    if(isset($_POST["username"])&&isset($_POST["userpassword"])){   //low security 
-
-                            $userid=loginDB($_POST[username],$_POST[userpassword]);
-                            if($userid!=0){
-                                session_start();
-                                $_SESSION['userid']=$userid;
-                                $_SESSION['flag']=1;
-                                echo "successfully logged in";
-                                //jump to engine
-                                header("Location: engine.php");
-
-
-                            }else{
-                                echo "log in failed";
-                            }
-                    }
-?>
+                    
                     </div>   
             </div>
-            <a href="./create.php"   target="_blank" sizei>
+            <a href="http://localhost/erdenebulag/calculator/create.php"   target="_blank" sizei>
                 <font size="5"> Бүртгүүлэх</font>
             </a>
-            <a href="./engine.php"   target="_blank" sizei>
+            <a href="http://localhost/erdenebulag/calculator/engine.php"   target="_blank" sizei>
                 <font size="5"> Тооцоолоорлуу</font>
             </a>
             <div id="side-btn">

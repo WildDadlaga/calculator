@@ -20,6 +20,15 @@
     <?php
         session_start();
         include "function.php";
+         if(isset($_SESSION['userid'])) echo "User with userid ".$_SESSION['userid']." Already logged in";
+                    else echo "Not logged in yet";
+
+        if(isset($_GET['logout'])){
+            unset($_GET['logout']);
+            session_destroy();                 
+            header('Refresh: 5; URL= http://localhost/erdenebulag/calculator/login.php');
+        }
+            
     ?>
             <style type="text/css">
            
@@ -126,7 +135,6 @@
                             </p>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                           </div>
                         </div>
 
@@ -286,9 +294,10 @@
                     </div>
                     </div>   
             </div>
-            <a href="./logout.php" target="_blank">
-              LOGOUT
-            </a>
+             <form action="engine.php" method="GET">
+                <input name="logout" type="submit" value="Logout" class="btn btn-lg"/>
+            </form>
+
 
 
 
